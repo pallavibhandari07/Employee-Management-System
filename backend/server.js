@@ -45,8 +45,14 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Catch-all handler: return JSON 404 for any unmatched route
+app.use('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.method} ${req.originalUrl}`
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
