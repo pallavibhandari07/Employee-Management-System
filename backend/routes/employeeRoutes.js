@@ -125,6 +125,14 @@ router.post('/', async (req, res) => {
       });
     }
 
+    // Handle Mongoose CastError (invalid data types, e.g. salary: "abc")
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid value provided for field: ${error.path}`
+      });
+    }
+
     res.status(500).json({
       success: false,
       message: 'Failed to create employee',
@@ -201,6 +209,14 @@ router.put('/:id', async (req, res) => {
       return res.status(400).json({
         success: false,
         message: messages.join('. ')
+      });
+    }
+
+    // Handle Mongoose CastError (invalid data types, e.g. salary: "abc")
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid value provided for field: ${error.path}`
       });
     }
 
