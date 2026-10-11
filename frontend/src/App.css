@@ -667,6 +667,8 @@
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
 }
@@ -931,6 +933,16 @@
 
 .form-group-full {
   grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group-full {
+    grid-column: span 1;
+  }
 }
 
 .form-group {
