@@ -110,6 +110,14 @@ router.post('/', async (req, res) => {
       data: savedEmployee
     });
   } catch (error) {
+    // Handle Mongoose CastError (invalid data types, e.g. salary: "abc")
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid value provided for field: ${error.path}`
+      });
+    }
+
     if (error.code === 11000) {
       return res.status(400).json({
         success: false,
@@ -189,6 +197,14 @@ router.put('/:id', async (req, res) => {
       data: updatedEmployee
     });
   } catch (error) {
+    // Handle Mongoose CastError (invalid data types, e.g. salary: "abc")
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        success: false,
+        message: `Invalid value provided for field: ${error.path}`
+      });
+    }
+
     if (error.code === 11000) {
       return res.status(400).json({
         success: false,
