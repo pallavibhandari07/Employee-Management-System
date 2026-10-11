@@ -191,13 +191,32 @@ function App() {
     setIsModalOpen(true)
   }
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     if (!formSubmitting) {
       setIsModalOpen(false)
       setEditingEmployee(null)
       setFormError(null)
     }
-  }
+  }, [formSubmitting])
+
+  // Handle ESC key to close open modals
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        if (isModalOpen && !formSubmitting) {
+          closeModal()
+        }
+        if (deletingEmployee && !isDeleting) {
+          setDeletingEmployee(null)
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isModalOpen, formSubmitting, deletingEmployee, isDeleting, closeModal])
 
   // Form Input Change Handler
   const handleInputChange = (e) => {
@@ -213,6 +232,12 @@ function App() {
     // Basic client-side validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.role.trim()) {
       setFormError('Please fill in Name, Email, and Job Title')
+      return
+    }
+
+    const emailRegex = /^\S+@\S+\.\S+$/
+    if (!emailRegex.test(formData.email.trim())) {
+      setFormError('Please enter a valid email address')
       return
     }
 
