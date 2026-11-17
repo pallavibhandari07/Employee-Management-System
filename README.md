@@ -1,5 +1,15 @@
 # Employee Management System
 
+<p align="left">
+  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/MongoDB_Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB Atlas" />
+  <img src="https://img.shields.io/badge/Frontend-Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
+  <img src="https://img.shields.io/badge/Backend-Render-46E3B7?style=flat-square&logo=render&logoColor=white" alt="Render" />
+</p>
+
 A full-stack web application to manage employee records efficiently. The application provides an employee dashboard with CRUD operations, search, filtering, and a responsive user interface.
 
 ## 🚀 Live Demo
@@ -7,6 +17,15 @@ A full-stack web application to manage employee records efficiently. The applica
 - **Frontend:** https://employee-management-system-ten-rho.vercel.app/
 - **Backend:** https://employee-management-system-n0au.onrender.com/
 - **API Health Check:** https://employee-management-system-n0au.onrender.com/api/health
+
+## 👩‍💻 Engineering Contributions (Pallavi Bhandari)
+
+In this collaborative team project, I authored the backend error-handling architecture:
+
+- **🛡️ Mongoose CastError Handling (`fix/backend-cast-error-handling` / Commit `c8d089d`):** Hardened Express routes against malformed MongoDB ObjectIds, ensuring graceful error recovery instead of unhandled server exceptions.
+- **🔍 Centralized JSON 404 Route Handling (`fix/backend-404-json-handler` / Commit `c31446d`):** Implemented fallback routing to return consistent, structured JSON error envelopes for unmatched endpoints.
+
+Additionally collaborated on team branch reviews and testing for dark-mode theme persistence and mobile responsive table layouts.
 
 ## ✨ Features
 
